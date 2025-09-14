@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Avatar: The Last Airbender - Characters</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/atla.css" />
+  </head>
+  <body>
+    <header>
+      <h1 class="main-title">Avatar: The Last Airbender</h1>
+      <h2 class="subtitle">Explore the World of Bending and Adventure</h2>
+    </header>
+
+    <section class="intro-text">
+      <p>
+        Journey into the world of Avatar, where people can manipulate the
+        elements of Water, Earth, Fire, and Air. Follow Aang and his friends as
+        they travel across the Four Nations to bring balance to the world.
+        Discover the rich cast of characters who make this epic tale
+        unforgettable.
+      </p>
+    </section>
+
+    <div id="loading" class="loading hidden">Loading characters...</div>
+    <div id="error" class="error hidden">
+      Error loading characters. Please try again.
+    </div>
+
+    <section id="charactersContainer" class="characters-grid"></section>
+
+    <footer>
+      <p class="footer-text">
+        Experience the magic of Avatar and discover your favorite bending
+        masters!
+      </p>
+    </footer>
+
+    <script>
+      // Perdon Guillermo, era hacer fetch o traer los datos a mano ಥ_ಥ
+      const API_BASE = "https://last-airbender-api.fly.dev/api/v1/characters";
+
+      const teamAvatarMembers = [
+        {
+          id: "5cf5679a915ecad153ab68c9",
+          name: "Aang",
+          element: "Air Master",
+          class: "air",
+        },
+        {
+          id: "5cf5679a915ecad153ab6992",
+          name: "Katara",
+          element: "Water Bender",
+          class: "water",
+        },
+        { searchName: "Sokka", element: "Sword Guy", class: "non-bender" },
+        { searchName: "Toph", element: "Earth Bender", class: "earth" },
+        {
+          id: "5cf5679a915ecad153ab6ab6",
+          name: "Zuko",
+          element: "Fire Bender",
+          class: "fire",
+        },
+        { searchName: "Suki", element: "Kyoshi Warrior", class: "non-bender" },
+        { searchName: "Ty Lee", element: "Acrobat", class: "non-bender" },
+        { searchName: "Mai", element: "Knife Thrower", class: "non-bender" },
+      ];
+
+      const charactersContainer = document.getElementById(
+        "charactersContainer"
+      );
+      const loading = document.getElementById("loading");
+      const error = document.getElementById("error");
+
+      function showLoading() {
+        loading.classList.remove("hidden");
+        error.classList.add("hidden");
+      }
+
+      function hideLoading() {
+        loading.classList.add("hidden");
+      }
+
+      function showError() {
+        error.classList.remove("hidden");
+        loading.classList.add("hidden");
+      }
+
+      function createCharacterCard(character, characterInfo) {
+        const photoUrl =
+          character.photoUrl ||
+          "https://via.placeholder.com/200x250?text=No+Image";
+
+        return `
+          <div class="character-box ${characterInfo.class}">
+            <img src="${photoUrl}" alt="${character.name}" class="character-pic" />
+            <h3 class="character-title">${character.name}</h3>
+            <p class="character-type ${characterInfo.class}-type">${characterInfo.element}</p>
+          </div>
+        `;
+      }
+
+      async function loadTeamAvatar() {
+        showLoading();
+        const loadedCharacters = [];
+
+        try {
+          for (const charInfo of teamAvatarMembers) {
+            if (charInfo.id) {
+              const response = await fetch(`${API_BASE}/${charInfo.id}`);
+              if (response.ok) {
+                const character = await response.json();
+                if (character) {
+                  loadedCharacters.push({ character, info: charInfo });
+                }
+              }
+            } else if (charInfo.searchName) {
+              const response = await fetch(
+                `${API_BASE}?name=${charInfo.searchName}`
+              );
+              if (response.ok) {
+                const characters = await response.json();
+                if (characters && characters.length > 0) {
+                  loadedCharacters.push({
+                    character: characters[0],
+                    info: charInfo,
+                  });
+                }
+              }
+            }
+          }
+
+          hideLoading();
+
+          if (loadedCharacters.length > 0) {
+            const charactersHTML = loadedCharacters
+              .map((item) => createCharacterCard(item.character, item.info))
+              .join("");
+            charactersContainer.innerHTML = charactersHTML;
+          } else {
+            charactersContainer.innerHTML =
+              "<p>No Team Avatar members found!</p>";
+          }
+        } catch (err) {
+          hideLoading();
+          showError();
+          console.error("Error:", err);
+        }
+      }
+
+      loadTeamAvatar();
+    </script>
+  </body>
+</html>

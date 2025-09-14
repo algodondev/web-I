@@ -1,0 +1,30 @@
+body {
+  background-color: lightblue;
+}
+
+div {
+  font-size: 20px;
+}
+
+.main-heading {
+  text-decoration: underline;
+  color: white;
+}
+
+.first-paragraph {
+  color: navy;
+  font-weight: bold;
+}
+
+.second-paragraph {
+  text-transform: uppercase;
+  text-align: justify;
+}
+
+.third-paragraph {
+  font-size: 12px;
+}
+
+.italic-text {
+  font-style: italic;
+}
