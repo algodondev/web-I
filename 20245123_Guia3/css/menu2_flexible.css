@@ -23,24 +23,26 @@ h1{
 /* PARTE SUPERIOR */
 #superior{
     width: 100%;
-    padding: 30px 0px;
+    padding: 2% 0px;
     background-color: #464d52;
 }
 
 #encabezado{
     margin: 0px auto;
-    width: 960px;
+    width: 80%;
+    min-width: 650px;
+    max-width: 960px;
 }
 
 #descripcion{
-    width: 360px;
-    height: 360px;
+    width: 37.5%;
+    height: auto;
     background-color: #888;
     float: left;
 }
 
 #descripcion p{
-    margin: 20px;
+    margin: 5%;
     color: white;
     font-weight: bold;
     line-height: 180%;
@@ -91,4 +93,9 @@ nav ul li a#galeria{
 nav ul li a:hover{
     color: #AAA;
     transform:scale(1.25);
+}
+
+#superior #logo{
+    margin: 2.3% 0px;
+    width: 21%;
 }

@@ -3,12 +3,16 @@
 }
 #imgDesc img {
     float: left;
+    width: 62.5%;
+    height: auto;
 }
 
 /*Contenido principal de las paginas*/
 #contenido{
-    width: 960px;
+    width: 80%;
     margin: 0px auto;
+    min-width: 650px;
+    max-width: 960px;
     clear: left;
 }
 
@@ -26,10 +30,10 @@ footer{
 
 /* CONTENIDO DE LA PAGINA INDEX */
 .plan{
-    width: 258px;
-    padding: 20px;
+    width: 26.7%;
+    padding: 2%;
     background-color:white;
-    margin: 30px 15px;
+    margin: 30px 1.5%;
     border: solid 1px black;
     border-radius: 10px;
     float: left;
@@ -69,11 +73,16 @@ footer{
     display: block;
 }
 
+.plan img{
+    width: 100%;
+    height: auto;
+}
+
 /* CONTENIDO DE LA PAGINA PLANES */
 .planes{
-    width: 900px;
+    width: 94%;
     background: white;
-    padding: 10px 30px;
+    padding: 1% 3%;
 }
 
 .planes h1{
@@ -89,6 +98,11 @@ footer{
     font-weight: bold;
 }
 
+.planes img{
+    width: 100%;
+    border-radius: 15px;
+}
+
 /* CONTENIDO DE LA PAGINA GALERIA*/
 #galeria .plan p{
     text-align: center;
@@ -96,6 +110,9 @@ footer{
 }
 #galeria .plan{
     font-size: 1em;
-    margin-bottom: 10px;
+    margin: 30px 1.4% 10px;
     padding-bottom: 1px;
+    display: inline-block;
+    float: none;
+    vertical-align: top;
 }
