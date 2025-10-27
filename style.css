@@ -99,6 +99,73 @@ section {
   gap: 1.5rem;
 }
 
+/* FODA Section */
+.foda-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.foda-item {
+  flex: 1;
+  min-width: 250px;
+  background-color: #252525;
+  border-radius: 8px;
+  padding: 1rem;
+  border: 1px solid #404040;
+  border-left: 3px solid;
+}
+
+.foda-item.fortalezas {
+  border-left-color: #28a745;
+}
+
+.foda-item.oportunidades {
+  border-left-color: #17a2b8;
+}
+
+.foda-item.debilidades {
+  border-left-color: #ffc107;
+}
+
+.foda-item.amenazas {
+  border-left-color: #dc3545;
+}
+
+.foda-title {
+  font-size: 1.1rem;
+  color: #ffffff;
+  margin-bottom: 0.3rem;
+}
+
+.foda-description {
+  color: #999999;
+  font-size: 0.75rem;
+  margin-bottom: 0.7rem;
+  font-style: italic;
+}
+
+.foda-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.foda-list li {
+  color: #cccccc;
+  padding: 0.3rem 0;
+  padding-left: 1.2rem;
+  position: relative;
+  font-size: 0.9rem;
+}
+
+.foda-list li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: #007bff;
+  font-weight: bold;
+}
+
 .guide-card {
   background-color: #252525;
   border-radius: 8px;
@@ -200,6 +267,14 @@ footer p {
 
   .section-title {
     font-size: 1.5rem;
+  }
+
+  .foda-container {
+    flex-direction: column;
+  }
+
+  .foda-item {
+    min-width: 100%;
   }
 
   .guide-card {
