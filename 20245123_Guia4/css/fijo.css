@@ -1,0 +1,101 @@
+#imgDesc{
+    overflow:hidden;
+}
+#imgDesc img {
+    float: left;
+}
+
+/*Contenido principal de las paginas*/
+#contenido{
+    width: 960px;
+    margin: 0px auto;
+    clear: left;
+}
+
+/* PIE DE LA PAGINA*/
+footer{
+    text-align: center;
+    margin: 0;
+    font-size: .9em;
+    line-height: 2;
+    clear: both;
+    background-color: #464d52;
+    color: white;
+    width: 100%;
+}
+
+/* CONTENIDO DE LA PAGINA INDEX */
+.plan{
+    width: 258px;
+    padding: 20px;
+    background-color:white;
+    margin: 30px 15px;
+    border: solid 1px black;
+    border-radius: 10px;
+    float: left;
+    text-align: justify;
+}
+/* Primer div, cuarto div, .... */
+#contenido div:nth-child(3n+1){
+    margin-left: 0px;
+}
+
+/* Tercer div, sexto div, etc */
+#contenido div:nth-child(3n){
+    margin-right: 0px;
+}
+
+.boton{
+    background-color:#464d52;
+    padding: 7px;
+    border-radius: 5px;
+    color: white;
+    margin-top: 10px;
+    font-size: .9em;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    transition: background 1s;
+}
+
+.boton:hover{
+    background: #5077c7;
+}
+
+.boton a{
+    text-decoration: none;
+    color: white;
+    width: 100%;
+    display: block;
+}
+
+/* CONTENIDO DE LA PAGINA PLANES */
+.planes{
+    width: 900px;
+    background: white;
+    padding: 10px 30px;
+}
+
+.planes h1{
+    text-align: left;
+    font-size: 1.5em;
+}
+
+.planes .precio{
+    font-size: 1.1em;
+    margin: 20px 0px 5px;
+    padding-bottom: 15px;
+    border-bottom: solid 2px grey;
+    font-weight: bold;
+}
+
+/* CONTENIDO DE LA PAGINA GALERIA*/
+#galeria .plan p{
+    text-align: center;
+    font-style: italic;
+}
+#galeria .plan{
+    font-size: 1em;
+    margin-bottom: 10px;
+    padding-bottom: 1px;
+}

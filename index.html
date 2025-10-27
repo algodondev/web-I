@@ -3,64 +3,106 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HTML & CSS Exercises</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #1a1a1a;
-        margin: 0;
-        padding: 40px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        min-height: 100vh;
-      }
-
-      h1 {
-        color: #ffffff;
-        margin-bottom: 40px;
-        font-size: 2.5em;
-        text-align: center;
-      }
-
-      .menu {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        width: 100%;
-        max-width: 400px;
-      }
-
-      .menu-item {
-        display: block;
-        padding: 15px 25px;
-        background-color: #2d2d2d;
-        color: #ffffff;
-        text-decoration: none;
-        border-radius: 8px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-        text-align: center;
-        font-size: 1.1em;
-        transition: all 0.3s ease;
-        border: 1px solid #404040;
-      }
-
-      .menu-item:hover {
-        background-color: #007bff;
-        color: white;
-        transform: translateY(-2px);
-        box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
-        border-color: #007bff;
-      }
-    </style>
+    <title>Portafolio - Diego Arévalo</title>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <h1>HTML & CSS Exercises</h1>
+    <!-- Header -->
+    <header>
+      <div class="header-content">
+        <div class="profile-section">
+          <h1>Diego Arévalo</h1>
+          <div class="student-info">
+            <div class="info-item">
+              <span class="info-label">Carnet:</span> 20245123
+            </div>
+            <div class="info-item">
+              <span class="info-label">Biografía:</span> Full Stack Software Developer
+            </div>
+          </div>
+        </div>
+        <div class="bio">
+          Portafolio de ejercicios - Introducción al Desarrollo Web
+        </div>
+      </div>
+    </header>
 
-    <nav class="menu">
-      <a href="20245123_Guia1/index.html" class="menu-item">Guía 1</a>
-      <a href="20245123_Guia2/index.html" class="menu-item">Guía 2</a>
-      <a href="20245123_Guia3/project_index.html" class="menu-item">Guía 3</a>
-    </nav>
+    <!-- Main Content -->
+    <div class="container">
+      <!-- About Course Section -->
+      <section>
+        <h2 class="section-title">Sobre la Materia</h2>
+        <p class="section-description">
+          <strong>Introducción al Desarrollo Web</strong> - Curso para aprender el uso de HTML, CSS y JavaScript.
+          Este portafolio documenta los ejercicios realizados durante el curso, organizados en tres guías principales.
+        </p>
+      </section>
+
+      <!-- Guides Section -->
+      <section>
+        <h2 class="section-title">Guías de Ejercicios</h2>
+        
+        <div class="guides-container">
+          <!-- Guía 1 -->
+          <div class="guide-card">
+            <div class="guide-number">1</div>
+            <div class="guide-content">
+              <h3 class="guide-title">Fundamentos de HTML y CSS</h3>
+              <p class="guide-description">
+                Introducción a los fundamentos de HTML y CSS, explorando diferentes métodos de aplicación de estilos 
+                y estructuración de contenido web.
+              </p>
+              <a href="20245123_Guia1/index.html" class="guide-link">Ver Ejercicios →</a>
+            </div>
+          </div>
+
+          <!-- Guía 2 -->
+          <div class="guide-card">
+            <div class="guide-number">2</div>
+            <div class="guide-content">
+              <h3 class="guide-title">Diseño y Maquetación con CSS</h3>
+              <p class="guide-description">
+                Desarrollo de proyectos con mayor complejidad visual, trabajando con el modelo de caja, 
+                posicionamiento y creación de layouts estructurados.
+              </p>
+              <a href="20245123_Guia2/index.html" class="guide-link">Ver Ejercicios →</a>
+            </div>
+          </div>
+
+          <!-- Guía 3 -->
+          <div class="guide-card">
+            <div class="guide-number">3</div>
+            <div class="guide-content">
+              <h3 class="guide-title">Layouts Responsivos y Flexbox</h3>
+              <p class="guide-description">
+                Implementación de diseños responsivos utilizando Flexbox, creación de menús navegables 
+                y galerías de imágenes.
+              </p>
+              <a href="20245123_Guia3/project_index.html" class="guide-link">Ver Ejercicios →</a>
+            </div>
+          </div>
+
+          <!-- Guía 4 -->
+          <div class="guide-card">
+            <div class="guide-number">4</div>
+            <div class="guide-content">
+              <h3 class="guide-title">Media Queries y Diseño Adaptativo</h3>
+              <p class="guide-description">
+                Aplicación práctica de media queries para crear sitios web totalmente responsivos que se adaptan 
+                a diferentes dispositivos (móvil, tablet y escritorio).
+              </p>
+              <a href="20245123_Guia4/project_index.html" class="guide-link">Ver Ejercicios →</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p><strong>Introducción al Desarrollo Web I</strong></p>
+      <p>Diego Francisco Arévalo Miranda - Carnet 20245123</p>
+      <p>ESEN - 2024</p>
+    </footer>
   </body>
 </html>

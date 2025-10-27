@@ -1,0 +1,77 @@
+@import url(https://fonts.googleapis.com/css?family=Muli);
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: 'Muli', sans-serif;
+    text-align: justify;
+}
+header{
+    background: #16A085;
+    height: 130px;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+footer{
+    background: #16A085;
+    height: 50px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+header div, footer div{
+    width: 80%;
+    margin: 0 auto;
+    color: white;
+}
+h1{
+    font-size: 2.3rem;
+    margin-bottom: 1rem;
+    padding-top: 0.5rem;
+}
+h2{
+    font-size: 2rem;
+}
+section{
+    margin: 0 auto;
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    overflow: hidden;
+    padding-top: 150px;
+    padding-bottom: 70px;
+}
+
+section article{
+    font-size:0.9rem;
+    height: 340px;
+    width: 32.33%;
+    margin: 0.5%;
+    border: 2px dashed #16A085;
+    padding: 1%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+section article img{
+    height: 180px;
+    max-width: 80%;
+    margin: 5px auto;
+    display: block;
+}
+
+section article h3{
+    text-align: center;
+}
+footer div{
+    padding-top: 1rem;
+}
+
