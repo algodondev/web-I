@@ -9,6 +9,11 @@ const buttonCrear = document.getElementById("idBtnCrear");
 
 const buttonAddElemento = document.getElementById("idBtnAddElement");
 
+const buttonValidar = document.getElementById("idBtnValidar");
+
+// Array para almacenar los IDs de los controles creados
+const controlIds = [];
+
 // ACCEDIENDO AL VALOR DEL SELECT PARA DETERMINAR EL TIPO DE ELEMENTO A CREAR
 
 const cmbElemento = document.getElementById("idCmbElemento");
@@ -36,6 +41,12 @@ const verificarTipoElemento = function () {
 };
 
 const newSelect = function () {
+    // Validar que el ID no exista
+    if (controlIds.includes(nombreElemento.value)) {
+        alert(`El ID "${nombreElemento.value}" ya existe. Por favor, elija un ID diferente.`);
+        return;
+    }
+    
     // Creado elementos
     let addElemento = document.createElement("select");
     //creado atributos para el nuevo elemento
@@ -78,6 +89,12 @@ const newSelect = function () {
 };
 
 const newRadioCheckbox = function (newElemento) {
+    // Validar que el ID no exista
+    if (controlIds.includes(nombreElemento.value)) {
+        alert(`El ID "${nombreElemento.value}" ya existe. Por favor, elija un ID diferente.`);
+        return;
+    }
+    
     // Creando elementos
     let addElemento = document.createElement("input");
     //creando atributos para el nuevo elemento
@@ -111,10 +128,19 @@ const newRadioCheckbox = function (newElemento) {
 
     //Creando el Div que sera hijo del nuevo Formulario
     newForm.appendChild(divElemento);
+    
+    // Agregar ID al array de controles
+    controlIds.push(nombreElemento.value);
 };
 
 const newInput = function (newElemento) {
-    // Creando elementos de tipo = text, number, date y password
+    // Validar que el ID no exista
+    if (controlIds.includes(nombreElemento.value)) {
+        alert(`El ID "${nombreElemento.value}" ya existe. Por favor, elija un ID diferente.`);
+        return;
+    }
+    
+    // Creando elementos de tipo = text, number, date, password, color, email y textarea
     let addElemento =
     newElemento == "textarea"
     ? document.createElement("textarea")
@@ -165,6 +191,59 @@ const newInput = function (newElemento) {
 
     //Creando el Div que sera hijo del nuevo Formulario
     newForm.appendChild(divElemento);
+    
+    // Agregar ID al array de controles
+    controlIds.push(nombreElemento.value);
+};
+
+// FUNCIÓN PARA VALIDAR CONTROLES DEL FORMULARIO
+const validarFormulario = function () {
+    let resultado = "Validación de controles:\n\n";
+    let todosValidos = true;
+    
+    // Recorrer todos los IDs almacenados
+    for (let controlId of controlIds) {
+        let elemento = document.getElementById(`id${controlId}`);
+        
+        if (!elemento) continue;
+        
+        let tipo = elemento.type || elemento.tagName.toLowerCase();
+        let valor = "";
+        let valido = false;
+        
+        // Validar según el tipo de control
+        switch (tipo) {
+            case "text":
+            case "number":
+            case "date":
+            case "password":
+            case "email":
+            case "color":
+            case "textarea":
+                valor = elemento.value.trim();
+                valido = valor !== "";
+                resultado += `${controlId} (${tipo}): ${valido ? '✓ Completo' : '✗ Vacío'}\n`;
+                break;
+                
+            case "radio":
+            case "checkbox":
+                valido = elemento.checked;
+                resultado += `${controlId} (${tipo}): ${valido ? '✓ Seleccionado' : '✗ No seleccionado'}\n`;
+                break;
+                
+            case "select":
+            case "select-one":
+                valor = elemento.value;
+                valido = valor !== "";
+                resultado += `${controlId} (select): ${valido ? '✓ Opción seleccionada' : '✗ Sin selección'}\n`;
+                break;
+        }
+        
+        if (!valido) todosValidos = false;
+    }
+    
+    resultado += `\n${todosValidos ? '✓ Todos los controles son válidos' : '✗ Hay controles sin completar'}`;
+    alert(resultado);
 };
 
 // AGREGANDO EVENTO CLIC A LOS BOTONES
@@ -185,6 +264,14 @@ buttonAddElemento.onclick = () => {
     }
     } else {
     alert("Faltan campos por completar");
+    }
+};
+
+buttonValidar.onclick = () => {
+    if (controlIds.length === 0) {
+        alert("No hay controles para validar. Agregue controles primero.");
+    } else {
+        validarFormulario();
     }
 };
 
