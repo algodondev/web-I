@@ -23,6 +23,10 @@ const idModal = document.getElementById("idModal");
 
 //Arreglo global de pacientes
 let arrayPaciente = [];
+// índice para edición (-1 = modo agregar)
+let editingIndex = -1;
+// Guardar el HTML original del botón agregar para restaurarlo
+const originalAgregarHtml = buttonAgregarPaciente ? buttonAgregarPaciente.innerHTML : "Guardar Datos";
 
 /*  
 Creado una función para que limpie el formulario  
@@ -68,18 +72,28 @@ const addPaciente = function () {
         pais != 0 &&
         direccion != ""
     ) {
-        //Agregando informacion al arreglo paciente
-        arrayPaciente.push(
-            new Array(nombre, apellido, fechaNacimiento, sexo, labelPais, direccion)
-        );
+        if (editingIndex === -1) {
+            // modo agregar
+            arrayPaciente.push(
+                new Array(nombre, apellido, fechaNacimiento, sexo, labelPais, direccion)
+            );
+            mensaje.innerHTML = "Se ha registrado un nuevo paciente";
+        } else {
+            // modo editar: actualizar registro existente
+            arrayPaciente[editingIndex] = [nombre, apellido, fechaNacimiento, sexo, labelPais, direccion];
+            mensaje.innerHTML = "Paciente actualizado correctamente";
+            // salir del modo edición
+            editingIndex = -1;
+            if (buttonAgregarPaciente) buttonAgregarPaciente.innerHTML = originalAgregarHtml;
+        }
 
-        //Asignando un mensaje a nuestra notificacion
-        mensaje.innerHTML = "Se ha registrado un nuevo paciente";
         //Llamando al componente de Bootstrap
         toast.show();
 
         //Limpiando formulario
         limpiarForm();
+        // Actualizar tabla si está visible
+        imprimirPacientes();
     } else {
         //Asignando un mensaje a nuestra notificacion
         mensaje.innerHTML = "Faltan campos por completar";
@@ -94,6 +108,7 @@ function imprimirFilas() {
     let contador = 1;
 
     arrayPaciente.forEach((element) => {
+        // añadimos data-index y clases para enlazar eventos tras renderizar
         $fila += '<tr>' +
             '<td scope="row" class="text-center fw-bold">' + contador + '</td>' +
             '<td>' + element[0] + '</td>' +
@@ -103,10 +118,10 @@ function imprimirFilas() {
             '<td>' + element[4] + '</td>' +
             '<td>' + element[5] + '</td>' +
             '<td>' +
-            '<button id="idBtnEditar' + contador + '" type="button" class="btn btn-primary" alt="Eliminar">' +
+            '<button data-index="' + (contador - 1) + '" type="button" class="btn btn-primary btn-editar me-1" title="Editar">' +
             '<i class="bi bi-pencil-square"></i>' +
             '</button>' +
-            '<button id="idBtnEliminar' + contador + '" type="button" class="btn btn-danger" alt="Editar">' +
+            '<button data-index="' + (contador - 1) + '" type="button" class="btn btn-danger btn-eliminar" title="Eliminar">' +
             '<i class="bi bi-trash3-fill"></i>' +
             '</button>' +
             '</td>' +
@@ -134,7 +149,67 @@ const imprimirPacientes = () => {
         '</table>' +
         '</div>';
     document.getElementById("idTablaPacientes").innerHTML = $table;
+    // Después de renderizar la tabla, enlazar eventos a los botones dinámicos
+    const container = document.getElementById("idTablaPacientes");
+    if (container) {
+        container.querySelectorAll('.btn-editar').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const idx = parseInt(btn.getAttribute('data-index'), 10);
+                editarPaciente(idx);
+            });
+        });
+        container.querySelectorAll('.btn-eliminar').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const idx = parseInt(btn.getAttribute('data-index'), 10);
+                eliminarPaciente(idx);
+            });
+        });
+    }
 };
+
+// Eliminar paciente por índice (0-based)
+function eliminarPaciente(index) {
+    if (index >= 0 && index < arrayPaciente.length) {
+        arrayPaciente.splice(index, 1);
+        mensaje.innerHTML = "Paciente eliminado";
+        toast.show();
+        // si estábamos editando ese registro, cancelar edición
+        if (editingIndex === index) {
+            editingIndex = -1;
+            if (buttonAgregarPaciente) buttonAgregarPaciente.innerHTML = originalAgregarHtml;
+            limpiarForm();
+        }
+        imprimirPacientes();
+    }
+}
+
+// Preparar edición: cargar datos en el formulario y poner modo edición
+function editarPaciente(index) {
+    if (index >= 0 && index < arrayPaciente.length) {
+        const p = arrayPaciente[index];
+        inputNombre.value = p[0];
+        inputApellido.value = p[1];
+        inputFechaNacimiento.value = p[2];
+        if (p[3] === 'Hombre') {
+            inputRdMasculino.checked = true;
+            inputRdFemenino.checked = false;
+        } else if (p[3] === 'Mujer') {
+            inputRdFemenino.checked = true;
+            inputRdMasculino.checked = false;
+        }
+        // seleccionar país por texto (si existe)
+        for (let i = 0; i < cmbPais.options.length; i++) {
+            if (cmbPais.options[i].text === p[4]) {
+                cmbPais.selectedIndex = i;
+                break;
+            }
+        }
+        inputDireccion.value = p[5];
+        editingIndex = index;
+        if (buttonAgregarPaciente) buttonAgregarPaciente.innerHTML = '<i class="bi bi-save"></i> Guardar cambios';
+        inputNombre.focus();
+    }
+}
 
 // Contador global de los option correspondiente
 // al select (cmb) pais

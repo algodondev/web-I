@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../css/stylesFunciones.css" rel="stylesheet" />
+    <title>Validación - Ficha Estudiante</title>
+</head>
+
+<body>
+    <header>
+        <div class="px-3 py-2 text-bg-dark fixed-top">
+            <div class="container">
+                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                    <a href="../indexFunciones.html"
+                        class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+                        <img src="../img/js.png" alt="" width="32" height="32" class="me-2" />
+                    </a>
+
+                    <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small nav-bar">
+                        <li class="text-center">
+                            <a href="recursividad.html" class="nav-link text-white">
+                                <i class="bi bi-arrow-clockwise bi-2 d-block"></i>
+                                Recursividad
+                            </a>
+                        </li>
+                        <li class="text-center">
+                            <a href="tabla.html" class="nav-link text-white">
+                                <i class="bi bi-table bi-2 d-block"></i>
+                                Creando una Tabla
+                            </a>
+                        </li>
+                        <li class="text-center">
+                            <a href="formulario.html" class="nav-link text-white">
+                                <i class="bi bi-ui-checks bi-2 d-block"></i>
+                                Formulario
+                            </a>
+                        </li>
+                        <li class="text-center nav-bar-li-active">
+                            <a href="estudiante.html" class="nav-link text-white">
+                                <i class="bi bi-person-badge bi-2 d-block"></i>
+                                Estudiante
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container-lg py-5">
+        <div class="row">
+            <div class="col-12 shadow-lg p-3 bg-body rounded">
+                <h3>Validación con Expresiones Regulares (Ficha Estudiante)</h3>
+                <form id="formEstudiante">
+                    <div class="mb-3">
+                        <label for="idCarnet" class="form-label">Carnet (ej: AB001)</label>
+                        <input type="text" id="idCarnet" class="form-control" placeholder="AB001">
+                    </div>
+                    <div class="mb-3">
+                        <label for="idNombreCompleto" class="form-label">Nombre completo</label>
+                        <input type="text" id="idNombreCompleto" class="form-control" placeholder="Juan Pérez">
+                    </div>
+                    <div class="mb-3">
+                        <label for="idDUI" class="form-label">DUI (########-#)</label>
+                        <input type="text" id="idDUI" class="form-control" placeholder="01234567-8">
+                    </div>
+                    <div class="mb-3">
+                        <label for="idNIT" class="form-label">NIT (####-######-###-#)</label>
+                        <input type="text" id="idNIT" class="form-control" placeholder="0623-120397-102-3">
+                    </div>
+                    <div class="mb-3">
+                        <label for="idFecha" class="form-label">Fecha de nacimiento (dd/mm/yyyy)</label>
+                        <input type="text" id="idFecha" class="form-control" placeholder="31/12/2000">
+                    </div>
+                    <div class="mb-3">
+                        <label for="idCorreo" class="form-label">Correo electrónico</label>
+                        <input type="email" id="idCorreo" class="form-control" placeholder="correo@ejemplo.com">
+                    </div>
+                    <div class="mb-3">
+                        <label for="idEdad" class="form-label">Edad (solo números)</label>
+                        <input type="text" id="idEdad" class="form-control" placeholder="20">
+                    </div>
+
+                    <div class="mb-3">
+                        <button id="btnValidar" type="button" class="btn btn-primary">Validar</button>
+                        <button id="btnLimpiarEst" type="button" class="btn btn-secondary">Limpiar</button>
+                    </div>
+                </form>
+                <div id="resultadoValidacion"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/estudiante.js" defer></script>
+</body>
+
+</html>
