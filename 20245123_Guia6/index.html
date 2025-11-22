@@ -2,80 +2,63 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE-edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/styles.css" rel="stylesheet" />
-    <link rel="icon" href="img/js.png" sizes="32x32" type="image/png" />
-    <title>Utilizando estructuras de control</title>
+    <title>Guía 6</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a;
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            color: #ffffff;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        .menu {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .menu-item {
+            display: block;
+            padding: 15px 25px;
+            background-color: #2d2d2d;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            border: 1px solid #404040;
+        }
+
+        .menu-item:hover {
+            background-color: #007bff;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+            border-color: #007bff;
+        }
+    </style>
 </head>
 <body>
-    <main class="d-flex flex-nowrap">
-        <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark nav-bar">
-            <a href="index.html" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                <img src="./img/js.png" alt="" width="32" height="32" class="me-2" />
-                <span class="fs-4">JavaScript</span>
-            </a>
-            <hr />
-            <ul class="nav nav-pills flex-column mb-auto">
-                <li class="nav-item">
-                    <a href="pages/registroAcademico.html" class="nav-link text-white">
-                        <i class="bi bi-file-spreadsheet" role="img" aria-label="RegistroAcademico"></i>
-                        Registro academico
-                    </a>
-                </li>
-                <li>
-                    <a href="pages/tablasMultiplicar.html" class="nav-link text-white">
-                        <i class="bi bi-person-workspace" role="img" aria-label="TablasMultiplicar"></i>
-                        Tablas de multiplicar
-                    </a>
-                </li>
-                <li>
-                    <a href="pages/promedioNotas.html" class="nav-link text-white">
-                        <i class="bi bi-file-earmark-medical" role="img" aria-label="Promedio"></i>
-                        Promedio notas
-                    </a>
-                </li>
-                <li>
-                    <a href="pages/arreglo.html" class="nav-link text-white">
-                        <i class="bi bi-box" role="img" aria-label="Arreglo"></i>
-                        Arreglo
-                    </a>
-                </li>
-            </ul>
-        </div>
+    <h1>Guía 6 - Diego Francisco Arévalo Miranda</h1>
 
-        <div class="d-flex flex-column flex-shrink-0 p-3 column-container">
-            <div class="p-5 mb-2 bg-light rounded-3">
-                <div class="container-fluid py-4">
-                    <h1 class="display-5 fw-bold">Utilizando estructuras de control</h1>
-                    <p class="col-md-8 fs-4">
-                    <ol>
-                        <li>
-                            Estructuras selectivas
-                            <ul>
-                                <li>if...else</li>
-                                <li>switch</li>
-                            </ul>
-                        </li>
-                        <li>
-                            Sentencias repetitivas
-                            <ul>
-                                <li>for</li>
-                                <li>while</li>
-                                <li>do while</li>
-                                <li>for...in</li>
-                                <li>for...of</li>
-                            </ul>
-                        </li>
-                        <li>Matrices</li>
-                    </ol>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+    <nav class="menu">
+        <a href="indexEstructuras.html" class="menu-item">Ejercicio 1: Estructuras de Control</a>
+        <a href="indexFunciones.html" class="menu-item">Ejercicio 2: Funciones Avanzadas</a>
+    </nav>
 </body>
 </html>
